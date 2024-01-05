@@ -1,15 +1,17 @@
-﻿using BookApi.Model;
+﻿using BookApi.DAL;
+using BookApi.Model;
 
 namespace BookApi.BAL
 {
     public class Author_BALBase
     {
+        Author_DALBase author_DALBase = new Author_DALBase();
+
         public List<AuthorModel> PR_AUTHOR_SELECT_ALL()
         {
             try
             {
-                Author_BALBase author_BALBase = new Author_BALBase();
-                List<AuthorModel> authorModels = author_BALBase.PR_AUTHOR_SELECT_ALL();
+                List<AuthorModel> authorModels = author_DALBase.PR_AUTHOR_SELECT_ALL();
                 return authorModels;
             }
             catch (Exception)
@@ -21,8 +23,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Author_BALBase author_BALBase = new Author_BALBase();
-                AuthorModel authorModel = author_BALBase.PR_AUTHOR_SELECT_BY_PK(AuthorID);
+                AuthorModel authorModel = author_DALBase.PR_AUTHOR_SELECT_BY_PK(AuthorID);
                 return authorModel;
             }
             catch (Exception)
@@ -34,8 +35,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Author_BALBase author_BALBase = new Author_BALBase();
-                if (author_BALBase.PR_AUTHOR_INSERT(authorModel))
+                if (author_DALBase.PR_AUTHOR_INSERT(authorModel))
                 {
                     return true;
                 }
@@ -53,8 +53,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Author_BALBase author_BALBase = new Author_BALBase();
-                if (author_BALBase.PR_AUTHOR_UPDATE(AuthorID, authorModel))
+                if (author_DALBase.PR_AUTHOR_UPDATE(AuthorID, authorModel))
                 {
                     return true;
                 }
@@ -72,8 +71,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Author_BALBase author_BALBase = new Author_BALBase();
-                if (author_BALBase.PR_AUTHOR_DELETE(AuthorID))
+                if (author_DALBase.PR_AUTHOR_DELETE(AuthorID))
                 {
                     return true;
                 }

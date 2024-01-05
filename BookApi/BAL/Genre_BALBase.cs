@@ -3,14 +3,15 @@ using BookApi.Model;
 
 namespace BookApi.BAL
 {
-    public class Genre_BALBase : DAL_Helper
+    public class Genre_BALBase
     {
+        Genre_DALBase genre_DALBase = new Genre_DALBase();
+
         public List<GenreModel> PR_GENRE_SELECT_ALL()
         {
             try
             {
-                Genre_BALBase genre_BALBase = new Genre_BALBase();
-                List<GenreModel> genreModels = genre_BALBase.PR_GENRE_SELECT_ALL();
+                List<GenreModel> genreModels = genre_DALBase.PR_GENRE_SELECT_ALL();
                 return genreModels;
             }
             catch (Exception)
@@ -22,8 +23,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Genre_BALBase genre_BALBase = new Genre_BALBase();
-                GenreModel genreModel = genre_BALBase.PR_GENRE_SELECT_BY_PK(GenreID);
+                GenreModel genreModel = genre_DALBase.PR_GENRE_SELECT_BY_PK(GenreID);
                 return genreModel;
             }
             catch (Exception)
@@ -35,8 +35,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Genre_BALBase genre_BALBase = new Genre_BALBase();
-                if (genre_BALBase.PR_GENRE_INSERT(genreModel))
+                if (genre_DALBase.PR_GENRE_INSERT(genreModel))
                 {
                     return true;
                 }
@@ -54,8 +53,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Genre_BALBase genre_BALBase = new Genre_BALBase();
-                if (genre_BALBase.PR_GENRE_UPDATE(GenreID, genreModel))
+                if (genre_DALBase.PR_GENRE_UPDATE(GenreID, genreModel))
                 {
                     return true;
                 }
@@ -73,8 +71,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Genre_BALBase genre_BALBase = new Genre_BALBase();
-                if (genre_BALBase.PR_GENRE_DELETE(GenreID))
+                if (genre_DALBase.PR_GENRE_DELETE(GenreID))
                 {
                     return true;
                 }

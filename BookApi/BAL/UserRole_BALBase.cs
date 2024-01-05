@@ -1,15 +1,16 @@
-﻿using BookApi.Model;
+﻿using BookApi.DAL;
+using BookApi.Model;
 
 namespace BookApi.BAL
 {
     public class UserRole_BALBase
     {
+        UserRole_DALBase userRole_DALBase = new UserRole_DALBase();
         public List<UserRoleModel> PR_ROLE_SELECT_ALL()
         {
             try
             {
-                UserRole_BALBase userRole_BALBase = new UserRole_BALBase();
-                List<UserRoleModel> userRoleModels = userRole_BALBase.PR_ROLE_SELECT_ALL();
+                List<UserRoleModel> userRoleModels = userRole_DALBase.PR_ROLE_SELECT_ALL();
                 return userRoleModels;
             }
             catch (Exception)
@@ -21,8 +22,7 @@ namespace BookApi.BAL
         {
             try
             {
-                UserRole_BALBase userRole_BALBase = new UserRole_BALBase();
-                UserRoleModel userRoleModel = userRole_BALBase.PR_ROLE_SELECT_BY_PK(RoleID);
+                UserRoleModel userRoleModel = userRole_DALBase.PR_ROLE_SELECT_BY_PK(RoleID);
                 return userRoleModel;
             }
             catch (Exception)
@@ -34,8 +34,7 @@ namespace BookApi.BAL
         {
             try
             {
-                UserRole_BALBase userRole_BALBase = new UserRole_BALBase();
-                if (userRole_BALBase.PR_ROLE_INSERT(userRoleModel))
+                if (userRole_DALBase.PR_ROLE_INSERT(userRoleModel))
                 {
                     return true;
                 }
@@ -53,8 +52,7 @@ namespace BookApi.BAL
         {
             try
             {
-                UserRole_BALBase userRole_BALBase = new UserRole_BALBase();
-                if (userRole_BALBase.PR_ROLE_UPDATE(RoleID, userRoleModel))
+                if (userRole_DALBase.PR_ROLE_UPDATE(RoleID, userRoleModel))
                 {
                     return true;
                 }
@@ -72,8 +70,7 @@ namespace BookApi.BAL
         {
             try
             {
-                UserRole_BALBase userRole_BALBase = new UserRole_BALBase();
-                if (userRole_BALBase.PR_ROLE_DELETE(RoleID))
+                if (userRole_DALBase.PR_ROLE_DELETE(RoleID))
                 {
                     return true;
                 }

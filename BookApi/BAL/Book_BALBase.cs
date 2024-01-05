@@ -5,11 +5,11 @@ namespace BookApi.BAL
 {
     public class Book_BALBase
     {
+        Book_DALBase book_DALBase = new Book_DALBase();
         public List<BookModel> PR_BOOK_SELECT_ALL()
         {
             try
             {
-                Book_DALBase book_DALBase = new Book_DALBase();
                 List<BookModel> bookModels = book_DALBase.PR_BOOK_SELECT_ALL();
                 return bookModels;
             }
@@ -22,7 +22,6 @@ namespace BookApi.BAL
         {
             try
             {
-                Book_DALBase book_DALBase = new Book_DALBase();
                 BookModel bookModel = book_DALBase.PR_BOOK_SELECT_BY_PK(BookID);
                 return bookModel;
             }
@@ -35,8 +34,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Book_DALBase book_DAlBase = new Book_DALBase();
-                if (book_DAlBase.PR_BOOK_INSERT(bookModel))
+                if (book_DALBase.PR_BOOK_INSERT(bookModel))
                 {
                     return true;
                 }
@@ -54,8 +52,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Book_DALBase book_DAlBase = new Book_DALBase();
-                if (book_DAlBase.PR_BOOK_UPDATE(BookID, bookModel))
+                if (book_DALBase.PR_BOOK_UPDATE(BookID, bookModel))
                 {
                     return true;
                 }
@@ -73,8 +70,7 @@ namespace BookApi.BAL
         {
             try
             {
-                Book_DALBase book_DAlBase = new Book_DALBase();
-                if (book_DAlBase.PR_BOOK_DELETE(BookID))
+                if (book_DALBase.PR_BOOK_DELETE(BookID))
                 {
                     return true;
                 }

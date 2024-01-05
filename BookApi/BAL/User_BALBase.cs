@@ -5,12 +5,12 @@ namespace BookApi.BAL
 {
     public class User_BALBase
     {
+        User_DALBase user_DALBase = new User_DALBase();
         public List<UserModel> PR_USER_SELECT_ALL()
         {
             try
             {
-                User_DALBase user_DAlBase = new User_DALBase();
-                List<UserModel> userModels = user_DAlBase.PR_USER_SELECT_ALL();
+                List<UserModel> userModels = user_DALBase.PR_USER_SELECT_ALL();
                 return userModels;
             }
             catch (Exception)
@@ -22,8 +22,7 @@ namespace BookApi.BAL
         {
             try
             {
-                User_DALBase user_DAlBase = new User_DALBase();
-                UserModel userModel = user_DAlBase.PR_USER_SELECT_BY_PK(UserID);
+                UserModel userModel = user_DALBase.PR_USER_SELECT_BY_PK(UserID);
                 return userModel;
             }
             catch (Exception)
@@ -35,8 +34,7 @@ namespace BookApi.BAL
         {
             try
             {
-                User_DALBase user_DAlBase = new User_DALBase();
-                if (user_DAlBase.PR_USER_INSERT(userModel))
+                if (user_DALBase.PR_USER_INSERT(userModel))
                 {
                     return true;
                 }
@@ -54,8 +52,7 @@ namespace BookApi.BAL
         {
             try
             {
-                User_DALBase user_DAlBase = new User_DALBase();
-                if (user_DAlBase.PR_USER_UPDATE(UserID, userModel))
+                if (user_DALBase.PR_USER_UPDATE(UserID, userModel))
                 {
                     return true;
                 }
@@ -73,8 +70,7 @@ namespace BookApi.BAL
         {
             try
             {
-                User_DALBase user_DAlBase = new User_DALBase();
-                if (user_DAlBase.PR_USER_DELETE(UserID))
+                if (user_DALBase.PR_USER_DELETE(UserID))
                 {
                     return true;
                 }
