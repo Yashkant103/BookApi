@@ -6,23 +6,23 @@ namespace BookApi.Controllers
 {
     [ApiController]
     [Route("api/[Controller]")]
-    public class BookController : Controller
+    public class BookWiseAuthorController : Controller
     {
-        Book_BALBase bal = null;
-        public BookController()
+        BookWiseAuthor_BALBase bal = null;
+        public BookWiseAuthorController()
         {
-            bal = new Book_BALBase();
+            bal = new BookWiseAuthor_BALBase();
         }
         [HttpGet]
         public IActionResult Get()
         {
-            List<BookModel> books = bal.PR_BOOK_SELECT_ALL();
+            List<BookWiseAuthorModel> roles = bal.PR_BookWiseAuthor_SELECT_ALL();
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
-            if (books.Count > 0 && books != null)
+            if (roles.Count > 0 && roles != null)
             {
                 response.Add("status", true);
                 response.Add("message", "Data found.");
-                response.Add("data", books);
+                response.Add("data", roles);
                 return Ok(response);
             }
             else
@@ -33,16 +33,16 @@ namespace BookApi.Controllers
                 return NotFound(response);
             }
         }
-        [HttpGet("{BookID}")]
-        public IActionResult Get(int BookID)
+        [HttpGet("{BookWiseAuthorID}")]
+        public IActionResult Get(int BookWiseAuthorID)
         {
-            BookModel bookModel = bal.PR_BOOK_SELECT_BY_PK(BookID);
+            BookWiseAuthorModel bookWiseAuthorModel = bal.PR_BookWiseAuthor_SELECT_BY_PK(BookWiseAuthorID);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
-            if (bookModel.BookID != null)
+            if (bookWiseAuthorModel != null)
             {
                 response.Add("status", true);
                 response.Add("message", "Data found.");
-                response.Add("data", bookModel);
+                response.Add("data", bookWiseAuthorModel);
                 return Ok(response);
             }
             else
@@ -54,9 +54,9 @@ namespace BookApi.Controllers
             }
         }
         [HttpPost]
-        public IActionResult Post([FromBody] BookModel bookModel)
+        public IActionResult Post([FromBody] BookWiseAuthorModel bookWiseAuthorModel)
         {
-            bool IsSuccess = bal.PR_BOOK_INSERT(bookModel);
+            bool IsSuccess = bal.PR_BookWiseAuthor_INSERT(bookWiseAuthorModel);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (IsSuccess)
             {
@@ -72,10 +72,10 @@ namespace BookApi.Controllers
             }
         }
         [HttpPut]
-        public IActionResult Put(int BookID, [FromBody] BookModel bookModel)
+        public IActionResult Put(int BookWiseAuthorID, [FromBody] BookWiseAuthorModel bookWiseAuthorModel)
         {
-            bookModel.BookID = BookID;
-            bool IsSuccess = bal.PR_BOOK_UPDATE(BookID, bookModel);
+            bookWiseAuthorModel.BookWiseAuthorID = BookWiseAuthorID;
+            bool IsSuccess = bal.PR_BookWiseAuthor_UPDATE(BookWiseAuthorID, bookWiseAuthorModel);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (IsSuccess)
             {
@@ -91,9 +91,9 @@ namespace BookApi.Controllers
             }
         }
         [HttpDelete]
-        public IActionResult Delete(int BookID)
+        public IActionResult Delete(int BookWiseAuthorID)
         {
-            bool IsSuccess = bal.PR_BOOK_DELETE(BookID);
+            bool IsSuccess = bal.PR_BookWiseAuthor_DELETE(BookWiseAuthorID);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (IsSuccess)
             {

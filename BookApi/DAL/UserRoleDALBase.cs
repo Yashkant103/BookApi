@@ -40,7 +40,7 @@ namespace BookApi.DAL
             try
             {
                 DbCommand dbCommand = sqlDatabase.GetStoredProcCommand("PR_ROLE_SELECT_BY_PK");
-                sqlDatabase.AddInParameter(dbCommand, "@AuhtorID", SqlDbType.Int, RoleID);
+                sqlDatabase.AddInParameter(dbCommand, "@RoleID", SqlDbType.Int, RoleID);
                 UserRoleModel userRoleModel = new UserRoleModel();
                 using (IDataReader dr = sqlDatabase.ExecuteReader(dbCommand))
                 {

@@ -72,10 +72,10 @@ namespace BookApi.Controllers
             }
         }
         [HttpPut]
-        public IActionResult Put(int UserID, [FromBody] UserModel userModel)
+        public IActionResult Put([FromBody] UserModel userModel)
         {
-            userModel.UserID = UserID;
-            bool IsSuccess = bal.PR_USER_UPDATE(UserID, userModel);
+            //userModel.UserID = UserID;
+            bool IsSuccess = bal.PR_USER_UPDATE(userModel);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (IsSuccess)
             {

@@ -3,38 +3,38 @@ using BookApi.Model;
 
 namespace BookApi.BAL
 {
-    public class User_BALBase
+    public class BookWiseAuthor_BALBase
     {
-        User_DALBase user_DALBase = new User_DALBase();
-        public List<UserModel> PR_USER_SELECT_ALL()
+        BookWiseAuthor_DALBase bookWiseAuthor_DALBase = new BookWiseAuthor_DALBase();
+        public List<BookWiseAuthorModel> PR_BookWiseAuthor_SELECT_ALL()
         {
             try
             {
-                List<UserModel> userModels = user_DALBase.PR_USER_SELECT_ALL();
-                return userModels;
+                List<BookWiseAuthorModel> bookWiseAuthorModels = bookWiseAuthor_DALBase.PR_BookWiseAuthor_SELECT_ALL();
+                return bookWiseAuthorModels;
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        public UserModel PR_USER_SELECT_BY_PK(int UserID)
+        public BookWiseAuthorModel PR_BookWiseAuthor_SELECT_BY_PK(int BookWiseAuthorID)
         {
             try
             {
-                UserModel userModel = user_DALBase.PR_USER_SELECT_BY_PK(UserID);
-                return userModel;
+                BookWiseAuthorModel bookWiseAuthorModel = bookWiseAuthor_DALBase.PR_BookWiseAuthor_SELECT_BY_PK(BookWiseAuthorID);
+                return bookWiseAuthorModel;
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        public bool PR_USER_INSERT(UserModel userModel)
+        public bool PR_BookWiseAuthor_INSERT(BookWiseAuthorModel bookWiseAuthorModel)
         {
             try
             {
-                if (user_DALBase.PR_USER_INSERT(userModel))
+                if (bookWiseAuthor_DALBase.PR_BookWiseAuthor_INSERT(bookWiseAuthorModel))
                 {
                     return true;
                 }
@@ -48,11 +48,11 @@ namespace BookApi.BAL
                 throw;
             }
         }
-        public bool PR_USER_UPDATE(UserModel userModel)
+        public bool PR_BookWiseAuthor_UPDATE(int BookWiseAuthorID, BookWiseAuthorModel bookWiseAuthorModel)
         {
             try
             {
-                if (user_DALBase.PR_USER_UPDATE(userModel))
+                if (bookWiseAuthor_DALBase.PR_BookWiseAuthor_UPDATE(BookWiseAuthorID, bookWiseAuthorModel))
                 {
                     return true;
                 }
@@ -66,11 +66,11 @@ namespace BookApi.BAL
                 throw;
             }
         }
-        public bool PR_USER_DELETE(int UserID)
+        public bool PR_BookWiseAuthor_DELETE(int BookWiseAuthorID)
         {
             try
             {
-                if (user_DALBase.PR_USER_DELETE(UserID))
+                if (bookWiseAuthor_DALBase.PR_BookWiseAuthor_DELETE(BookWiseAuthorID))
                 {
                     return true;
                 }

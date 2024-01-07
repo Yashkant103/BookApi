@@ -40,7 +40,7 @@ namespace BookApi.DAL
             try
             {
                 DbCommand dbCommand = sqlDatabase.GetStoredProcCommand("PR_GENRE_SELECT_BY_PK");
-                sqlDatabase.AddInParameter(dbCommand, "@AuhtorID", SqlDbType.Int, GenreID);
+                sqlDatabase.AddInParameter(dbCommand, "@GenreID", SqlDbType.Int, GenreID);
                 GenreModel GenreModel = new GenreModel();
                 using (IDataReader dr = sqlDatabase.ExecuteReader(dbCommand))
                 {

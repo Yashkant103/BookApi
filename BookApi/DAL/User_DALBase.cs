@@ -83,12 +83,12 @@ namespace BookApi.DAL
                 throw;
             }
         }
-        public bool PR_USER_UPDATE(int UserID, UserModel userModel)
+        public bool PR_USER_UPDATE(UserModel userModel)
         {
             try
             {
                 DbCommand dbCommand = sqlDatabase.GetStoredProcCommand("PR_USER_UPDATE");
-                sqlDatabase.AddInParameter(dbCommand, "@UserID", SqlDbType.Int, UserID);
+                sqlDatabase.AddInParameter(dbCommand, "@UserID", SqlDbType.Int, userModel.UserID);
                 sqlDatabase.AddInParameter(dbCommand, "@UserName", SqlDbType.VarChar, userModel.UserName);
                 sqlDatabase.AddInParameter(dbCommand, "@UserEmail", SqlDbType.VarChar, userModel.UserEmail);
                 sqlDatabase.AddInParameter(dbCommand, "@UserPassword", SqlDbType.VarChar, userModel.UserPassword);

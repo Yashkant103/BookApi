@@ -41,7 +41,7 @@ namespace BookApi.DAL
             try
             {
                 DbCommand dbCommand = sqlDatabase.GetStoredProcCommand("PR_AUTHOR_SELECT_BY_PK");
-                sqlDatabase.AddInParameter(dbCommand, "@AuhtorID", SqlDbType.Int, AuthorID);
+                sqlDatabase.AddInParameter(dbCommand, "@AuthorID", SqlDbType.Int, AuthorID);
                 AuthorModel authorModel = new AuthorModel();
                 using (IDataReader dr = sqlDatabase.ExecuteReader(dbCommand))
                 {
