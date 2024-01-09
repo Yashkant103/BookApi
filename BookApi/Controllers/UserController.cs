@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookApi.Controllers
 {
     [ApiController]
-    [Route("api/[Controller]")]
+    [Route("api/[Controller]/[action]")]
     public class UserController : Controller
     {
         User_BALBase bal = null;

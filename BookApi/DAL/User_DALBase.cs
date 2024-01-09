@@ -28,6 +28,8 @@ namespace BookApi.DAL
                         userModel.UserEmail = dr["UserEmail"].ToString();
                         userModel.RoleID = Convert.ToInt32(dr["RoleID"].ToString());
                         userModel.IsActive = Convert.ToBoolean(dr["IsActive"]);
+                        userModel.Created = Convert.ToDateTime(dr["Created"]);
+                        userModel.Modified = Convert.ToDateTime(dr["Modified"]);
                         userModels.Add(userModel);
                     }
                 }
@@ -54,6 +56,8 @@ namespace BookApi.DAL
                         userModel.UserEmail = dr["UserEmail"].ToString();
                         userModel.RoleID = Convert.ToInt32(dr["RoleID"].ToString());
                         userModel.IsActive = Convert.ToBoolean(dr["IsActive"]);
+                        userModel.Created = Convert.ToDateTime(dr["Created"]);
+                        userModel.Modified = Convert.ToDateTime(dr["Modified"]);
                     }
                 }
                 return userModel;
