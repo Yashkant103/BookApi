@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookApi.Controllers
 {
     [ApiController]
-    [Route("api/[Controller]")]
+    [Route("api/[Controller]/[Action]")]
     public class GenreController : Controller
     {
         Genre_BALBase bal = null;
@@ -20,38 +20,26 @@ namespace BookApi.Controllers
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (genres.Count > 0 && genres != null)
             {
-                response.Add("status", true);
-                response.Add("message", "Data found.");
-                response.Add("data", genres);
-                return Ok(response);
+                //response.Add("status", true);
+                //response.Add("message", "Data found.");
+                //response.Add("data", genres);
+                return Ok(genres);
             }
-            else
-            {
-                response.Add("status", false);
-                response.Add("message", "Data not Found.");
-                response.Add("data", null);
-                return NotFound(response);
-            }
+            return NotFound(genres);
         }
         [HttpGet("{GenreID}")]
-        public IActionResult Get(int GenreID)
+        public IActionResult GetById(int GenreID)
         {
             GenreModel genreModel = bal.PR_GENRE_SELECT_BY_PK(GenreID);
-            Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
+            //Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (genreModel != null)
             {
-                response.Add("status", true);
-                response.Add("message", "Data found.");
-                response.Add("data", genreModel);
-                return Ok(response);
+                //response.Add("status", true);
+                //response.Add("message", "Data found.");
+                //response.Add("data", genreModel);
+                return Ok(genreModel);
             }
-            else
-            {
-                response.Add("status", false);
-                response.Add("message", "Data not Found.");
-                response.Add("data", null);
-                return NotFound(response);
-            }
+            return NotFound(genreModel);
         }
         [HttpPost]
         public IActionResult Post([FromBody] GenreModel genreModel)
@@ -72,23 +60,19 @@ namespace BookApi.Controllers
             }
         }
         [HttpPut]
-        public IActionResult Put(int GenreID, [FromBody] GenreModel genreModel)
+        public IActionResult Put([FromBody] GenreModel genreModel)
         {
-            genreModel.GenreID = GenreID;
-            bool IsSuccess = bal.PR_GENRE_UPDATE(GenreID, genreModel);
+            //genreModel.GenreID = GenreID;
+            bool IsSuccess = bal.PR_GENRE_UPDATE(genreModel);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (IsSuccess)
             {
-                response.Add("status", true);
-                response.Add("message", "Data Updated Successfully");
-                return Ok(response);
+                //response.Add("status", true);
+                //response.Add("message", "Data Updated Successfully");
+                return Ok(genreModel);
             }
-            else
-            {
-                response.Add("status", false);
-                response.Add("message", "Data not Found");
-                return NotFound(response);
-            }
+            return NotFound(genreModel);
+
         }
         [HttpDelete]
         public IActionResult Delete(int GenreID)

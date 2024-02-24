@@ -48,11 +48,11 @@ namespace BookApi.BAL
                 throw;
             }
         }
-        public bool PR_BOOK_UPDATE(int BookID, BookModel bookModel)
+        public bool PR_BOOK_UPDATE(BookModel bookModel)
         {
             try
             {
-                if (book_DALBase.PR_BOOK_UPDATE(BookID, bookModel))
+                if (book_DALBase.PR_BOOK_UPDATE(bookModel))
                 {
                     return true;
                 }

@@ -6,6 +6,7 @@
         public string Title { get; set; }
         public string Image { get; set; }
         public int GenreID { get; set; }
+        public int BookWiseAuthorID { get; set; }
         public string ISBN { get; set; }
         public DateTime PublishDate { get; set; }
         public decimal Price { get; set; }

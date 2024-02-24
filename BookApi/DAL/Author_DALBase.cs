@@ -26,6 +26,8 @@ namespace BookApi.DAL
                         authorModel.AuthorID = Convert.ToInt32(dr["AuthorID"]);
                         authorModel.AuthorName = Convert.ToString(dr["AuthorName"]);
                         authorModel.AuthorEmail = Convert.ToString(dr["AuthorEmail"]);
+                        authorModel.Created = Convert.ToDateTime(dr["Created"]);
+                        authorModel.Modified = Convert.ToDateTime(dr["Modified"]);
                         authorModels.Add(authorModel);
                     }
                 }
@@ -76,7 +78,7 @@ namespace BookApi.DAL
                 throw;
             }
         }
-        public bool PR_AUTHOR_UPDATE(int AuthorID, AuthorModel authorModel)
+        public bool PR_AUTHOR_UPDATE(AuthorModel authorModel)
         {
             try
             {

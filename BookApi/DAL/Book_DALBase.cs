@@ -27,6 +27,7 @@ namespace BookApi.DAL
                         bookModel.Title = dr["Title"].ToString();
                         bookModel.Image = dr["Image"].ToString();
                         bookModel.GenreID = Convert.ToInt32(dr["GenreID"]);
+                        bookModel.BookWiseAuthorID = Convert.ToInt32(dr["BookWiseAuthorID"]);
                         bookModel.ISBN = dr["ISBN"].ToString();
                         bookModel.PublishDate = Convert.ToDateTime(dr["PublishDate"]);
                         bookModel.Price = Convert.ToDecimal(dr["Price"]);
@@ -55,6 +56,7 @@ namespace BookApi.DAL
                         bookModel.Title = dr["Title"].ToString();
                         bookModel.Image = dr["Image"].ToString();
                         bookModel.GenreID = Convert.ToInt32(dr["GenreID"]);
+                        bookModel.BookWiseAuthorID = Convert.ToInt32(dr["BookWiseAuthorID"]);
                         bookModel.ISBN = dr["ISBN"].ToString();
                         bookModel.PublishDate = Convert.ToDateTime(dr["PublishDate"]);
                         bookModel.Price = Convert.ToDecimal(dr["Price"]);
@@ -75,6 +77,7 @@ namespace BookApi.DAL
                 sqlDatabase.AddInParameter(dbCommand, "@Title", SqlDbType.VarChar, bookModel.Title);
                 sqlDatabase.AddInParameter(dbCommand, "@Image", SqlDbType.VarChar, bookModel.Image);
                 sqlDatabase.AddInParameter(dbCommand, "@GenreID", SqlDbType.Int, bookModel.GenreID);
+                sqlDatabase.AddInParameter(dbCommand, "@BookWiseAuthorID", SqlDbType.Int, bookModel.BookWiseAuthorID);
                 sqlDatabase.AddInParameter(dbCommand, "@ISBN", SqlDbType.VarChar, bookModel.ISBN);
                 sqlDatabase.AddInParameter(dbCommand, "@PublishDate", SqlDbType.DateTime, bookModel.PublishDate);
                 sqlDatabase.AddInParameter(dbCommand, "@Price", SqlDbType.Decimal, bookModel.Price);
@@ -93,7 +96,7 @@ namespace BookApi.DAL
                 throw;
             }
         }
-        public bool PR_BOOK_UPDATE(int BookID, BookModel bookModel)
+        public bool PR_BOOK_UPDATE(BookModel bookModel)
         {
             try
             {
@@ -102,6 +105,7 @@ namespace BookApi.DAL
                 sqlDatabase.AddInParameter(dbCommand, "@Title", SqlDbType.VarChar, bookModel.Title);
                 sqlDatabase.AddInParameter(dbCommand, "@Image", SqlDbType.VarChar, bookModel.Image);
                 sqlDatabase.AddInParameter(dbCommand, "@GenreID", SqlDbType.Int, bookModel.GenreID);
+                sqlDatabase.AddInParameter(dbCommand, "@BookWiseAuthorID", SqlDbType.Int, bookModel.BookWiseAuthorID);
                 sqlDatabase.AddInParameter(dbCommand, "@ISBN", SqlDbType.VarChar, bookModel.ISBN);
                 sqlDatabase.AddInParameter(dbCommand, "@PublishDate", SqlDbType.DateTime, bookModel.PublishDate);
                 sqlDatabase.AddInParameter(dbCommand, "@Price", SqlDbType.Decimal, bookModel.Price);

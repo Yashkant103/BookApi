@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookApi.Controllers
 {
     [ApiController]
-    [Route("api/[Controller]")]
+    [Route("api/[Controller]/[Action]")]
     public class UserRoleController : Controller
     {
         UserRole_BALBase bal = null;
@@ -20,21 +20,16 @@ namespace BookApi.Controllers
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (roles.Count > 0 && roles != null)
             {
-                response.Add("status", true);
-                response.Add("message", "Data found.");
-                response.Add("data", roles);
-                return Ok(response);
+                //response.Add("status", true);
+                //response.Add("message", "Data found.");
+                //response.Add("data", roles);
+                return Ok(roles);
             }
-            else
-            {
-                response.Add("status", false);
-                response.Add("message", "Data not Found.");
-                response.Add("data", null);
-                return NotFound(response);
-            }
+            return NotFound(roles);
+
         }
         [HttpGet("{RoleID}")]
-        public IActionResult Get(int RoleID)
+        public IActionResult GetById(int RoleID)
         {
             UserRoleModel userRoleModel = bal.PR_ROLE_SELECT_BY_PK(RoleID);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();

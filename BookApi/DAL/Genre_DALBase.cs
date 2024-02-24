@@ -73,7 +73,7 @@ namespace BookApi.DAL
                 throw;
             }
         }
-        public bool PR_GENRE_UPDATE(int GenreID, GenreModel GenreModel)
+        public bool PR_GENRE_UPDATE(GenreModel GenreModel)
         {
             try
             {

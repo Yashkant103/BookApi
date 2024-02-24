@@ -53,6 +53,7 @@ namespace BookApi.DAL
                     {
                         userModel.UserID = Convert.ToInt32(dr["UserID"]);
                         userModel.UserName = dr["UserName"].ToString();
+                        userModel.UserPassword = dr["UserPassword"].ToString();
                         userModel.UserEmail = dr["UserEmail"].ToString();
                         userModel.RoleID = Convert.ToInt32(dr["RoleID"].ToString());
                         userModel.IsActive = Convert.ToBoolean(dr["IsActive"]);

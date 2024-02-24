@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookApi.Controllers
 {
     [ApiController]
-    [Route("api/[Controller]/[action]")]
+    [Route("api/[Controller]/[Action]")]
     public class UserController : Controller
     {
         User_BALBase bal = null;
@@ -13,6 +13,7 @@ namespace BookApi.Controllers
         {
             bal = new User_BALBase();
         }
+
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,7 +35,7 @@ namespace BookApi.Controllers
             }
         }
         [HttpGet("{UserID}")]
-        public IActionResult Get(int UserID)
+        public IActionResult GetByID(int UserID)
         {
             UserModel userModel = bal.PR_USER_SELECT_BY_PK(UserID);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
@@ -108,5 +109,13 @@ namespace BookApi.Controllers
                 return NotFound(response);
             }
         }
+        [HttpPost]
+        public IActionResult Login([FromBody] Login_Model login_Model)
+        {
+            Login_BALBase login_BALBase = new Login_BALBase();
+            return Ok(login_BALBase.PR_USER_LOGIN(login_Model.UserName, login_Model.UserPassword));
+        }
+
     }
+
 }

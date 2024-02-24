@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace BookApi.Controllers
 {
     [ApiController]
-    [Route("api/[Controller]")]
+    [Route("api/[Controller]/[Action]")]
     public class BookController : Controller
     {
         Book_BALBase bal = null;
@@ -20,38 +20,27 @@ namespace BookApi.Controllers
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (books.Count > 0 && books != null)
             {
-                response.Add("status", true);
-                response.Add("message", "Data found.");
-                response.Add("data", books);
-                return Ok(response);
+                //response.Add("status", true);
+                //response.Add("message", "Data found.");
+                //response.Add("data", books);
+                return Ok(books);
             }
-            else
-            {
-                response.Add("status", false);
-                response.Add("message", "Data not Found.");
-                response.Add("data", null);
-                return NotFound(response);
-            }
+            return NotFound(books);
+
         }
         [HttpGet("{BookID}")]
-        public IActionResult Get(int BookID)
+        public IActionResult GetById(int BookID)
         {
             BookModel bookModel = bal.PR_BOOK_SELECT_BY_PK(BookID);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (bookModel.BookID != null)
             {
-                response.Add("status", true);
-                response.Add("message", "Data found.");
-                response.Add("data", bookModel);
-                return Ok(response);
+                //response.Add("status", true);
+                //response.Add("message", "Data found.");
+                //response.Add("data", bookModel);
+                return Ok(bookModel);
             }
-            else
-            {
-                response.Add("status", false);
-                response.Add("message", "Data not Found.");
-                response.Add("data", null);
-                return NotFound(response);
-            }
+            return NotFound(bookModel);
         }
         [HttpPost]
         public IActionResult Post([FromBody] BookModel bookModel)
@@ -72,10 +61,10 @@ namespace BookApi.Controllers
             }
         }
         [HttpPut]
-        public IActionResult Put(int BookID, [FromBody] BookModel bookModel)
+        public IActionResult Put([FromBody] BookModel bookModel)
         {
-            bookModel.BookID = BookID;
-            bool IsSuccess = bal.PR_BOOK_UPDATE(BookID, bookModel);
+            //bookModel.BookID = BookID;
+            bool IsSuccess = bal.PR_BOOK_UPDATE(bookModel);
             Dictionary<string, dynamic> response = new Dictionary<string, dynamic>();
             if (IsSuccess)
             {
